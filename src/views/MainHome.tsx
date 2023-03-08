@@ -10,7 +10,7 @@ function MainHome (){
       <Header/>
         </div>
         <p>
-            
+            Test
         </p>
       </div>
   )
