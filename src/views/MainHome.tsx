@@ -9,6 +9,9 @@ function MainHome (){
       <div className="home__container ">
       <Header/>
         </div>
+        <p>
+            
+        </p>
       </div>
   )
 }
