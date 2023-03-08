@@ -7,14 +7,14 @@ import CartEmpty from 'components/cart/cartEmpty'
 function Cart() {
 
   const cart = useSelector((state:any) => state.cart)
-  console.log(cart)
+  console.log(cart, "Cart view")
 
   return (
     <div className="cart">
         <div>
-          {cart.length >= 1 ?
+          {cart.cart.length >= 1 ?
             <CartItem
-            cart={cart}
+            cart={cart.cart}
             />
            : <CartEmpty/>}
         </div>

@@ -1,12 +1,22 @@
 import {BrowserRouter,Routes, Route} from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { store } from 'redux/store/store';
+import { useEffect } from 'react';
 //views
 import Cart from 'views/Cart';
 import Home from 'views/Home';
 import Product from 'views/Product';
 
 function App() {
+  useEffect(() => {
+    let domain;
+    const host = window.location.host;
+
+    const arr = host
+    .split(".")
+    .slice(0, host.includes("localhost") ? -1 : -2);
+    if(arr.length > 0) domain = "shop"
+  },[])
   return (
     <BrowserRouter>
     <Provider store={store}>

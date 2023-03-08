@@ -3,7 +3,7 @@ import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
 //components
 import CartIcon from 'components/cart/cartIcon';
-import SearchIcon from 'components/Search/searchIcon'
+import SearchIcon from 'components/Search/searchIcon';
 
 const navigation = {
   categories: [
@@ -129,7 +129,14 @@ const navigation = {
 }
 
 export const Header = () => {
+  const [quotes, setQuotes] = useState([]);
   const [open, setOpen] = useState(false)
+
+  const clearResults = () => setQuotes([]);
+
+  const onSearchSubmit = (term:any) => {
+    console.log('New Search submit', term); 
+  }
 
   return (
     <div className="bg-white">
@@ -163,7 +170,7 @@ export const Header = () => {
 
               <div className="ml-auto flex items-center">
                 {/* Search */}
-                <SearchIcon/>
+                <SearchIcon onSearchSubmit={(term:any) => onSearchSubmit(term)} clearResults={clearResults}/>
                 {/* Cart */}
                 <div className="ml-4 flow-root lg:ml-6">
                   <div >

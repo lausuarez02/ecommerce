@@ -5,6 +5,8 @@ import {Header} from 'components/header'
 import useFetch from 'helpers/fetchHelper'
 import routes from 'routes/routes'
 import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import {useNavigate} from 'react-router-dom'
 // process.env
 
 const products = [
@@ -36,6 +38,17 @@ const products = [
 function Home (){
   const [data, setData] = useState()
 
+  // Defining the navigate function to be able to navigate
+  const navigate = useNavigate()
+
+  //getting the data from the search the user made
+  const cart = useSelector((state:any) => (console.log(state, "test"), state.search.dataSearch))
+  
+  // Getting the last search from the array made when the user make a search
+  const lastSearch = cart[cart.length -1]
+  console.log(lastSearch, "testproduct")
+  
+  //
   const key = process.env.REACT_APP_API_KEY
   console.log(key)
 
@@ -63,6 +76,8 @@ function Home (){
 // if(!data)return <div>Loading</div>
 // console.log(data)
   return (
+    lastSearch === null ?
+    <div>poronga</div> :
     <div className="home">
       <div className="home__container ">
       <Header/>

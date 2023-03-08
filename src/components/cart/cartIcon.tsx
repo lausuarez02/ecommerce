@@ -4,12 +4,18 @@ import { useSelector } from 'react-redux';
 
 const CartIcon = () => {
     const navigate = useNavigate()
-    const cart = useSelector((state:any) => state.cart)
+    const cart = useSelector((state:any) => (console.log(state, "test"), state.cart))
+    console.log("new cart",cart)
     const getTotalQuantity = () => {
         let total = 0
-        cart.forEach((item:any) => {
-          total += item.quantity
-        })
+        if(cart.cart.length >= 0){
+          cart.cart.forEach((item:any) => {
+            console.log(item.quantity, "item quantity")
+            total += item.quantity
+          })
+        }else{
+          total = 0
+        }
         return total
       }
     return(
