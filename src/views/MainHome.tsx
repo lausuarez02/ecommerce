@@ -53,7 +53,7 @@ function MainHome (){
   return (
     <div className="home">
       <div className="home__container ">
-      <Header/>
+      <Header search="false"/>
         </div>
         <p>
             <CardTypeProduct
