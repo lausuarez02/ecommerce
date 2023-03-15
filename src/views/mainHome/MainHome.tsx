@@ -59,29 +59,29 @@ function MainHome (){
 
     const fetchData = async () => {
       try{
-        let response = await fetch('http://127.0.0.1:4004/data')
+        let response = await fetch('http://127.0.0.1:4005/data')
         let json = await response.json();
         setNewData(json);
-        return json
       }catch(e){
         console.log(e)
       }}
 
-    const memoizedVal = useMemo(() => fetchData(), [])
+      useEffect(() => {
+        fetchData()
+      },[])
 
-    console.log(memoizedVal, "testing memoizedVal")
-    console.log(newdata, "testing newData")
+    // console.log(newdata, "testing newData")
     // console.log(data, "test fetch")
   return (
     <div className="home">
       <div className="home__container ">
       <Header search="false"/>
         </div>
-        <p>
+        <div>
             <CardTypeProduct
-            newData={products}
+            newData={newdata}
             />
-        </p>
+        </div>
       </div>
   )
 }

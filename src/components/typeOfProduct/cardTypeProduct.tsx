@@ -1,4 +1,5 @@
 import { useDispatch } from 'react-redux';
+import {useState, useEffect} from 'react';
 import {Link } from 'react-router-dom'
 import {productData} from 'redux/reducers/productReducer';
 //components
@@ -54,8 +55,21 @@ const products = [
   // More products...
 ]
 function CardTypeProduct({newData}:any) {
-  console.log( "test products")
 
+  // const [newdata, setNewData] = useState()
+
+  // const fetchData = async () => {
+  //   try{
+  //     let response = await fetch('http://127.0.0.1:4005/data')
+  //     let json = await response.json();
+  //     setNewData(json);
+  //   }catch(e){
+  //     console.log(e)
+  //   }}
+
+  //   useEffect(() => {
+  //     fetchData()
+  //   },[])
 
   return (
 <div className="bg-white py-24 sm:py-20">
@@ -67,7 +81,7 @@ function CardTypeProduct({newData}:any) {
     <div className="bg-white py-24 sm:py-32">
     <TitleMainProduct title='Type of Products'/>
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {products.map((item:any) => {
+        {newData != undefined ? (newData['products'] as unknown as any[] ).map((item:any) => {
             return(
             <div key={item.id} className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
              <div className="p-8 sm:p-10 lg:flex-auto">
@@ -81,7 +95,8 @@ function CardTypeProduct({newData}:any) {
                  />
            </div>
            </div>
-        )})}
+        )}) : 
+        <div>Loading</div>}
   </div>
 </div>
   </div>

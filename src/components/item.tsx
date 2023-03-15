@@ -52,15 +52,7 @@ const products = [
 ]
 
 function Item({newData}:any) {
-  const [productsData, serProductsData] = useState()
-
-  // useEffect(()=> {
-  //   serProductsData(newData['products'])
-  // },[])
-
-  useEffect(() => {
-
-  }, [])
+ 
   console.log(newData, "testing newData")
 
   // console.log(productsData, 'testing produc datas')
@@ -103,7 +95,7 @@ function Item({newData}:any) {
     <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
     <div>
     <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {newData['products'].map((product:any) => {
+        {newData != undefined ? (newData['products'] as unknown as any[]).map((product:any) => {
             return(
                 <div key={product.id}>
                   <div className="group relative" >
@@ -117,10 +109,10 @@ function Item({newData}:any) {
         <div className="mt-4 flex justify-between">
           <div>
             <h3 className="text-sm text-gray-700">
-              <a href="#">
+            
                 <span aria-hidden="true" className="absolute inset-0"></span>
                 Basic Tee
-              </a>
+            
             </h3>
           </div>
           <p className="text-sm font-medium text-gray-900">$35</p>
@@ -134,7 +126,9 @@ function Item({newData}:any) {
            ))} className="mt-1 text-sm text-gray-500">ted</button> */}
                 </div>
         )
-        })}
+        }) :
+        <div>Loading</div>
+        }
 </div>
 </div>
   </div>

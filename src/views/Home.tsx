@@ -121,19 +121,18 @@ function Home (){
 
 const [newdata, setNewData] = useState()
 
-const fetchData = () => {
-  fetch('http://127.0.0.1:4004/data',{
-    mode: 'cors', // no-cors, *cors, same-origin
-  })
-  .then(res => {return res.json()})
-  .then(data => {
-    setNewData(data)
-  })
-}
+const fetchData = async () => {
+  try{
+    let response = await fetch('http://127.0.0.1:4005/data')
+    let json = await response.json();
+    setNewData(json);
+  }catch(e){
+    console.log(e)
+  }}
 
-useEffect(() => {
-  fetchData()
-},[])
+  useEffect(() => {
+    fetchData()
+  },[])
 
   return (
     lastSearch === null ?
