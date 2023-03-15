@@ -84,6 +84,7 @@ function CardTypeProduct({newData}:any) {
         {newData != undefined ? (newData['products'] as unknown as any[] ).map((item:any) => {
             return(
             <div key={item.id} className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+              <Link to={item.color}>
              <div className="p-8 sm:p-10 lg:flex-auto">
              <h3 className="text-2xl font-bold tracking-tight text-gray-900">{item.title}</h3>
              <p className="mt-6 text-base leading-7 text-gray-600">{item.imageAlt}</p>
@@ -94,6 +95,7 @@ function CardTypeProduct({newData}:any) {
                  style={{maxWidth: "400px"}}
                  />
            </div>
+           </Link>
            </div>
         )}) : 
         <div>Loading</div>}

@@ -70,26 +70,6 @@ function Item({newData}:any) {
   // }
 
   return (
-    // <div className="item">
-    //   <div className="item__info">
-    //     <p className="item__title">{title}</p>
-    //     <p className="item__price">
-    //       <small>$</small>
-    //       <strong>{price}</strong>
-    //     </p>
-    //   </div>
-    //   <img
-    //     src={image}
-    //     alt="item"
-    //   />
-    //   <button 
-    //     onClick={() => 
-    //       dispatch(addToCart({
-    //         id, title, image, price
-    //       }))
-    //     }>Add to Cart
-    //   </button>
-    // </div>
     <div className="bg-white">
   <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
     <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>

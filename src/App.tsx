@@ -23,7 +23,7 @@ function App() {
     <Provider store={store}>
       <Routes>
         <Route path='/' element={<MainHome/>}/>
-        <Route path='/test' element={<Home />}/>
+        <Route path='/:id' element={<Home />}/>
         <Route path='/cart' element={<Cart />}/>
         <Route path='/product/:id' element={<Product/>}/>
       </Routes>

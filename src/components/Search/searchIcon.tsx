@@ -2,40 +2,42 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline'
 import { useEffect, useState } from 'react';
 import {mainSearchData} from 'redux/reducers/searchReducer'
 import { useDispatch } from 'react-redux';
+import {useLocation, useNavigate} from 'react-router-dom';
 
-const SearchIcon = ({onSearchSubmit, clearResults}: any) => {
-  const [term, setTerm] = useState('');
-  const [debouncedTerm, setDebouncedTerm] = useState(term);
+const SearchIcon = () => {
+  const [debouncedTerm, setDebouncedTerm] = useState('');
   const dispatch = useDispatch()
+  const pathName = useLocation().pathname
+  const navigate = useNavigate()
+
 
   // update 'term' value after 1 second from the last update of 'debouncedTerm'
-  useEffect(() => {
-      const timer = setTimeout(() => setTerm(debouncedTerm), 1000);
-      return () => clearTimeout(timer);
-  }, [debouncedTerm])
+  // useEffect(() => {
+  //     const timer = setTimeout(() => setTerm(debouncedTerm), 1000);
+  //     return () => clearTimeout(timer);
+  // }, [debouncedTerm])
 
   const SearchSubmitButton = () => {
-      useEffect(() => {
-        if(term !== ''){
-            onSearchSubmit(term);
-            dispatch(mainSearchData(term))
+        if(debouncedTerm !== ''){
+            // onSearchSubmit(term);
+            dispatch(mainSearchData(debouncedTerm))
+            navigate(pathName)
         }
         else{
-            clearResults();
+          dispatch(mainSearchData(''))
         }
-    }, [term])
-  }
+    }
 
-  // submit a new search
-    useEffect(() => {
-      if(term !== ''){
-          onSearchSubmit(term);
-          dispatch(mainSearchData(term))
-      }
-      else{
-          clearResults();
-      }
-  }, [term]);
+  // submit a new search without clickng button
+  //   useEffect(() => {
+  //     if(term !== ''){
+  //         // onSearchSubmit(term);
+  //         dispatch(mainSearchData(term))
+  //     }
+  //     else{
+  //         clearResults();
+  //     }
+  // }, [term]);
 
   return (
     <div className="flex lg:ml-6">
@@ -50,7 +52,7 @@ const SearchIcon = ({onSearchSubmit, clearResults}: any) => {
   />
   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
   <span className="sr-only">Search</span>
-  <div onClick={() => SearchSubmitButton}>
+  <div onClick={() => SearchSubmitButton()}>
   <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
   </div>
 </a>
