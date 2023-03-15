@@ -2,13 +2,72 @@ import { useDispatch } from 'react-redux';
 import {addToCart} from 'redux/reducers/cartReducer';
 import {Link, useNavigate} from 'react-router-dom'
 import {productData} from 'redux/reducers/productReducer';
+import { useEffect, useState } from 'react';
 //components
+const products = [
+  {
+    id: 1,
+    title: 'Throwback Hip Bag',
+    href: '#',
+    color: 'Salmon',
+    price: '90.00',
+    quantity: 1,
+    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
+    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
+  },
+  {
+    id: 2,
+    title: 'Medium Stuff Satchel',
+    href: '#',
+    color: 'Blue',
+    price: '32.00',
+    quantity: 1,
+    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageAlt:
+      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+  },
+  {
+    id: 3,
+    title: 'Medium Stuff Satchel',
+    href: '#',
+    color: 'Blue',
+    price: '32.00',
+    quantity: 1,
+    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageAlt:
+      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+  },
+  {
+    id: 4,
+    title: 'Medium Stuff Satchel',
+    href: '#',
+    color: 'Blue',
+    price: '32.00',
+    quantity: 1,
+    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
+    imageAlt:
+      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
+  }
+  // More products...
+]
 
-function Item({products}:any) {
-    const {id, image, title, price} = products
-    const mapObject = products.map((item: any) => {return(item.id, item.image, item.title, item.price)} )
+function Item({newData}:any) {
+  const [productsData, serProductsData] = useState()
+
+  // useEffect(()=> {
+  //   serProductsData(newData['products'])
+  // },[])
+
+  useEffect(() => {
+
+  }, [])
+  console.log(newData, "testing newData")
+
+  // console.log(productsData, 'testing produc datas')
+    // const {id, image, title, price} = newData
+    // const mapObject = newData.map((item: any) => {return(item.id, item.image, item.title, item.price)} )
   const dispatch = useDispatch()
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   // const destructuringLink = (url:string) => {
   //   let newString = '1';
@@ -44,7 +103,7 @@ function Item({products}:any) {
     <h2 className="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
     <div>
     <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-        {products.map((product:any) => {
+        {newData['products'].map((product:any) => {
             return(
                 <div key={product.id}>
                   <div className="group relative" >

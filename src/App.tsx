@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import Cart from 'views/Cart';
 import Home from 'views/Home';
 import Product from 'views/Product';
-import MainHome from 'views/MainHome';
+import MainHome from 'views/mainHome/MainHome';
 
 function App() {
   useEffect(() => {
@@ -23,7 +23,7 @@ function App() {
     <Provider store={store}>
       <Routes>
         <Route path='/' element={<MainHome/>}/>
-        <Route path='/:id' element={<Home />}/>
+        <Route path='/test' element={<Home />}/>
         <Route path='/cart' element={<Cart />}/>
         <Route path='/product/:id' element={<Product/>}/>
       </Routes>

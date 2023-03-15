@@ -96,29 +96,45 @@ function Home (){
   const key = process.env.REACT_APP_API_KEY
   console.log(key)
 
-  useEffect(() => {
-    try{
-      const response:any = fetch(routes.products.mainRoute, {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
-        mode: 'cors', // no-cors, *cors, same-origin
-        cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: 'same-origin', // include, *same-origin, omit
-        headers:{
-          "X-RapidAPI-Key": `${key}`,
-          "X-RapidAPI-Host": "amazon24.p.rapidapi.com",
-          'Content-Type': 'application/json'
-        }})
-        setData(response)
-    }catch(e){
-      console.log(e)
-    }
-  }, [])
+  // useEffect(() => {
+  //   try{
+  //     const response:any = fetch(routes.products.mainRoute, {
+  //       method: 'GET', // *GET, POST, PUT, DELETE, etc.
+  //       mode: 'cors', // no-cors, *cors, same-origin
+  //       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+  //       credentials: 'same-origin', // include, *same-origin, omit
+  //       headers:{
+  //         "X-RapidAPI-Key": `${key}`,
+  //         "X-RapidAPI-Host": "amazon24.p.rapidapi.com",
+  //         'Content-Type': 'application/json'
+  //       }})
+  //       setData(response)
+  //   }catch(e){
+  //     console.log(e)
+  //   }
+  // }, [])
 
 
-  console.log(data)
 // if(error)return <div>no data</div>
 // if(!data)return <div>Loading</div>
 // console.log(data)
+
+const [newdata, setNewData] = useState()
+
+const fetchData = () => {
+  fetch('http://127.0.0.1:4004/data',{
+    mode: 'cors', // no-cors, *cors, same-origin
+  })
+  .then(res => {return res.json()})
+  .then(data => {
+    setNewData(data)
+  })
+}
+
+useEffect(() => {
+  fetchData()
+},[])
+
   return (
     lastSearch === null ?
     <div>poronga</div> :
@@ -127,7 +143,7 @@ function Home (){
       <Header/>
         <div className="home__row">
           <Item
-          products={products}
+          newData={newdata}
           />
         </div>
       </div>
