@@ -3,9 +3,9 @@ import { Provider } from 'react-redux';
 import { store } from 'redux/store/store';
 import { useEffect } from 'react';
 //views
-import Cart from 'views/Cart';
-import Home from 'views/Home';
-import Product from 'views/Product';
+import Cart from 'views/cart/Cart';
+import Home from 'views/home/Home';
+import Product from 'views/product/Product';
 import MainHome from 'views/mainHome/MainHome';
 
 function App() {

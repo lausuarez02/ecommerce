@@ -4,8 +4,8 @@ import Products from 'components/product'
 
 const Product = () => {
     return(
-        <div>
-            <Products/>
+        <div data-testid="product">
+            <Products data-testid="products"/>
         </div>
     )
 }

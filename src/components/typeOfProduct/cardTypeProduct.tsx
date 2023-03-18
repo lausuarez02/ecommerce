@@ -5,7 +5,7 @@ import {productData} from 'redux/reducers/productReducer';
 //components
 import MainSearchBar from './mainSearchBar'
 import TitleMainProduct from './titleMainProduct'
-import LineSeparetor from 'components/lineSeparetor'
+import LineSeparetor from 'components/lineSeparetor/lineSeparetor'
 
 
 const products = [
