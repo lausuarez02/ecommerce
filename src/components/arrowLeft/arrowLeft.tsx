@@ -12,10 +12,10 @@ const ArrowLeft = ({path}:Properties) => {
         <div style={{width:"30px", marginLeft: "20px", marginTop:"20px"}}>
             {
              path ?
-             <Link to={path}>
+             <Link to={path} data-testid='LinkSpecificPath'>
              <ArrowLeftIcon/>
              </Link> :
-             <div onClick={() => navigate(-1)}>
+             <div onClick={() => navigate(-1)} data-testid='LinkLastPath'>
               <ArrowLeftIcon/>
              </div>
             }

@@ -1,6 +1,6 @@
 //components
-import Item from 'components/item'
-import {Header} from 'components/header'
+import Item from 'components/item/item'
+import {Header} from 'components/header/header'
 //helpers 
 import useFetch from 'helpers/fetchHelper'
 import routes from 'routes/routes'

@@ -1,4 +1,4 @@
-import Total from 'components/total'
+import Total from 'components/total/total'
 import { useSelector } from 'react-redux'
 //components
 import CartItem from 'components/cart/cartItem'

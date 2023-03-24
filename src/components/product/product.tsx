@@ -5,7 +5,7 @@ import { RadioGroup } from '@headlessui/react'
 import { useSelector } from 'react-redux';
 //components
 import CartIcon from 'components/cart/cartIcon';
-import ArrowLeft from 'components/arrowLeft'
+import ArrowLeft from 'components/arrowLeft/arrowLeft'
 import {addToCart} from 'redux/reducers/cartReducer';
 import {deleteAllData} from 'redux/reducers/productReducer';
 

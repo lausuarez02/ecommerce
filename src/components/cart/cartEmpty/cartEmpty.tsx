@@ -1,7 +1,7 @@
 import { useState } from 'react'
 //components
 import CartBottom from 'components/cart/cartBottom'
-import ArrowLeft from 'components/arrowLeft'
+import ArrowLeft from 'components/arrowLeft/arrowLeft'
 
 const CartEmpty = () => {
   const BACK = '/'

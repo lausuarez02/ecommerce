@@ -1,5 +1,6 @@
+// component
 import SearchIcon from './searchIcon';
-// import renderer from 'react-test-renderer';
+// utils
 import { Provider } from 'react-redux';
 import {render, fireEvent} from '@testing-library/react';
 import {createStore} from 'redux';
@@ -55,7 +56,6 @@ describe('SearchIcon component', () => {
 
         const {divElement} = setUp()
         const {input} = setUp()
-        const {getByTestId} = setUp()
         fireEvent.change(input, {target: {value: 'test'}});
         fireEvent.click(divElement);
         if((input as HTMLInputElement).value !== ''){

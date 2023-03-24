@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 //components
-import Products from 'components/product'
+import Products from 'components/product/product'
 
 const Product = () => {
     return(

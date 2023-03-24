@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { incrementQuantity, decrementQuantity, addToCart,removeItem} from 'redux/reducers/cartReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import CartBottom from 'components/cart/cartBottom'
-import ArrowLeft from 'components/arrowLeft'
+import ArrowLeft from 'components/arrowLeft/arrowLeft'
 
 interface Cart {
   cart:{
