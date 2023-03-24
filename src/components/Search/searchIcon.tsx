@@ -43,6 +43,7 @@ const SearchIcon = () => {
     <div className="flex lg:ml-6">
     <input
     type="text"
+    data-testid="setDebouncedTerm"
     name="price"
     id="price"
     className="block w-full rounded-md border-gray-300 pl-7 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
@@ -52,7 +53,7 @@ const SearchIcon = () => {
   />
   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
   <span className="sr-only">Search</span>
-  <div onClick={() => SearchSubmitButton()}>
+  <div  data-testid="SearchSubmitButton" onClick={() => SearchSubmitButton()} >
   <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
   </div>
 </a>
