@@ -1,8 +1,8 @@
 import Total from 'components/total/total'
 import { useSelector } from 'react-redux'
 //components
-import CartItem from 'components/cart/cartItem'
-import CartEmpty from 'components/cart/cartEmpty'
+import CartItem from 'components/cart/cartItem/cartItem'
+import CartEmpty from 'components/cart/cartEmpty/cartEmpty'
 
 function Cart() {
 

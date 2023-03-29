@@ -3,12 +3,12 @@ import CartIcon from './cartIcon';
 import { Provider, useSelector } from 'react-redux';
 import {fireEvent, render} from '@testing-library/react';
 import {createStore} from 'redux';
-import {BrowserRouter} from 'react-router-dom'
+import {BrowserRouter,useNavigate} from 'react-router-dom'
 
 const mockedUsedNavigate = jest.fn();
 
 jest.mock('react-router-dom', () => ({
-    ...(jest.requireActual('react-router-dom') as any),
+    ...(jest.requireActual('react-router-dom')),
     useNavigate: () => mockedUsedNavigate,
     // useSelector: (state={cart:'test'} as any) => state.cart
 }))
@@ -42,10 +42,11 @@ describe('Test cartBotton component', () => {
         }
     
         const {divElement} = setUp();
-
+    
         fireEvent.click(divElement as any)
-        mockedUsedNavigate();
         expect(mockedUsedNavigate).toBeCalled()
+        mockedUsedNavigate.mockRestore();
+
     })
     it('should render the if statement cart length', () => {
         const cart:any= {
@@ -60,11 +61,9 @@ describe('Test cartBotton component', () => {
     
         const setUp = () => {
             const {getAllByTestId, getByText} = render(
-                <BrowserRouter>
                 <Provider store={store}>
                     <CartIcon/>
                 </Provider>
-                </BrowserRouter>
             )
             const divElement = getAllByTestId('getTotalQuantity')[0];
 

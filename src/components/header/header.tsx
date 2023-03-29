@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
 //components
-import CartIcon from 'components/cart/cartIcon';
+import CartIcon from 'components/cart/cartIcon/cartIcon';
 import SearchIcon from 'components/Search/searchIcon';
 
 export const Header = ({search = "true"}:any) => {

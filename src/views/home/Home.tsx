@@ -7,7 +7,9 @@ import routes from 'routes/routes'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import {useNavigate} from 'react-router-dom'
+import FetchHook from 'hooks/fetchHook/fetchHook'
 // process.env
+
 
 const products = [
   {
@@ -80,10 +82,9 @@ const products = [
 
 
 function Home (){
-  const [data, setData] = useState()
-
-  // Defining the navigate function to be able to navigate
-  const navigate = useNavigate()
+  const { error, data, revalidate } = FetchHook({
+    url: new URL(routes.products.testRoute)
+  })
 
   //getting the data from the search the user made
   const cart = useSelector((state:any) => (console.log(state, "test"), state.search.dataSearch))
@@ -119,21 +120,30 @@ function Home (){
 // if(!data)return <div>Loading</div>
 // console.log(data)
 
-const [newdata, setNewData] = useState()
 
-const fetchData = async () => {
-  try{
-    let response = await fetch('http://127.0.0.1:4005/data')
-    let json = await response.json();
-    setNewData(json);
-  }catch(e){
-    console.log(e)
-  }}
+// Last call for data that awas working
+//
+// const [newdata, setNewData] = useState()
 
-  useEffect(() => {
-    fetchData()
-  },[])
+// const fetchData = async () => {
+//   try{
+//     let response = await fetch('http://127.0.0.1:4005/data')
+//     let json = await response.json();
+//     setNewData(json);
+//   }catch(e){
+//     console.log(e)
+//   }}
 
+//   useEffect(() => {
+//     fetchData()
+//   },[])
+
+if(!data){
+  return <h2>Loading...</h2>
+}
+if(error){
+  return <h2>Error fetching users</h2>
+}
   return (
     lastSearch === null ?
     <div>poronga</div> :
@@ -142,7 +152,7 @@ const fetchData = async () => {
       <Header/>
         <div className="home__row">
           <Item
-          newData={newdata}
+          newData={data}
           />
         </div>
       </div>
