@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 //routes 
 import routes from 'routes/routes'
 // helpers
+import FetchHook from 'hooks/fetchHook/fetchHook'
 
 const products = [
     {
@@ -56,19 +57,28 @@ const products = [
 
 function MainHome (){
     const [newdata, setNewData] = useState()
+    const { products:{ testRoute}} = routes 
+      const { error, data } = FetchHook({
+    url: new URL(testRoute),
+    revalidate: false
+  })
 
-    const fetchData = async () => {
-      try{
-        let response = await fetch('http://127.0.0.1:4005/data')
-        let json = await response.json();
-        setNewData(json);
-      }catch(e){
-        console.log(e)
-      }}
+  // const { products }:any = data
 
-      useEffect(() => {
-        fetchData()
-      },[])
+  console.log(data, 'testing homedata' )
+
+    // const fetchData = async () => {
+    //   try{
+    //     let response = await fetch('http://127.0.0.1:4005/data')
+    //     let json = await response.json();
+    //     setNewData(json);
+    //   }catch(e){
+    //     console.log(e)
+    //   }}
+
+    //   useEffect(() => {
+    //     fetchData()
+    //   },[])
 
     // console.log(newdata, "testing newData")
     // console.log(data, "test fetch")
@@ -79,7 +89,7 @@ function MainHome (){
         </div>
         <div>
             <CardTypeProduct
-            newData={newdata}
+            data={data}
             />
         </div>
       </div>

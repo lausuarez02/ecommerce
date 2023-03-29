@@ -82,9 +82,13 @@ const products = [
 
 
 function Home (){
-  const { error, data, revalidate } = FetchHook({
-    url: new URL(routes.products.testRoute)
+  const { products: { testRoute}} = routes
+
+  const { error, data } = FetchHook({
+    url: new URL(testRoute),
   })
+
+  // console.log(data, 'testing homedata' )
 
   //getting the data from the search the user made
   const cart = useSelector((state:any) => (console.log(state, "test"), state.search.dataSearch))
@@ -138,12 +142,12 @@ function Home (){
 //     fetchData()
 //   },[])
 
-if(!data){
-  return <h2>Loading...</h2>
-}
-if(error){
-  return <h2>Error fetching users</h2>
-}
+// if(!data){
+//   return <h2>Loading...</h2>
+// }
+// if(error){
+//   return <h2>Error fetching users</h2>
+// }
   return (
     lastSearch === null ?
     <div>poronga</div> :

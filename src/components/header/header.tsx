@@ -1,11 +1,14 @@
 import { Fragment, useState } from 'react'
 import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useSelector } from 'react-redux';
 //components
 import CartIcon from 'components/cart/cartIcon/cartIcon';
 import SearchIcon from 'components/Search/searchIcon';
 
 export const Header = ({search = "true"}:any) => {
+  const [searchData,setSearchData ] = useState()
+  const dataSearch = useSelector((state:any) => state)
 
   return (
     <div className="bg-white">
@@ -34,7 +37,7 @@ export const Header = ({search = "true"}:any) => {
 
             <div className="ml-auto flex items-center">
               {/* Search */}
-              <SearchIcon/>
+              <SearchIcon search={dataSearch}/>
               {/* Cart */}
               <div className="ml-4 flow-root lg:ml-6">
                 <div >

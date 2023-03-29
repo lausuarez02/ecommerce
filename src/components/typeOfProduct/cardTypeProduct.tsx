@@ -54,7 +54,8 @@ const products = [
   }
   // More products...
 ]
-function CardTypeProduct({newData}:any) {
+function CardTypeProduct({data}:any) {
+  console.log(data, 'testing CardTypePorduct')
 
   // const [newdata, setNewData] = useState()
 
@@ -81,7 +82,7 @@ function CardTypeProduct({newData}:any) {
     <div className="bg-white py-24 sm:py-32">
     <TitleMainProduct title='Type of Products'/>
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {newData != undefined ? (newData['products'] as unknown as any[] ).map((item:any) => {
+        {data != undefined ? (data[0]['products'] as Object as any[] ).map((item:any) => {
             return(
             <div key={item.id} className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
               <Link to={item.color}>

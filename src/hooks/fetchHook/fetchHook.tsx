@@ -3,10 +3,11 @@ import React, {useCallback, useEffect, useState} from 'react';
 interface hookData {
     url: URL,
     type?: string,
-    body?: Object
+    body?: Object,
+    revalidate?: boolean
 }
 
-const FetchHook = ({url, type='GET', body}:hookData) => {
+const FetchHook = ({url, type='GET', body, revalidate}:hookData) => {
     const [data,setData] = useState(null)
     const [error,setError] = useState<any>()
     const [loading,setLoading] = useState(false)
@@ -22,7 +23,8 @@ const FetchHook = ({url, type='GET', body}:hookData) => {
                 },
                 body: JSON.stringify(body)
             })
-            setData((response as any).data)
+            let json = await response.json()
+            setData((json as any))
         }catch(e){
             setError(e)
         }
@@ -30,11 +32,10 @@ const FetchHook = ({url, type='GET', body}:hookData) => {
 
     useEffect(() => {
         fetchData()
-    }, [fetchData])
+    }, [])
     return {
         data,
         error,
-        revalidate: fetchData
     };
 };
 
