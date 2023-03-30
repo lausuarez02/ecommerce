@@ -7,6 +7,7 @@ import Cart from 'views/cart/Cart';
 import Home from 'views/home/Home';
 import Product from 'views/product/Product';
 import MainHome from 'views/mainHome/MainHome';
+import Login from 'views/login/login';
 
 function App() {
   useEffect(() => {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/:id' element={<Home />}/>
         <Route path='/cart' element={<Cart />}/>
         <Route path='/product/:id' element={<Product/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
       </Provider>
     </BrowserRouter>

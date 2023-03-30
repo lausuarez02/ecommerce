@@ -7,6 +7,9 @@ import {Link} from 'react-router-dom'
 import routes from 'routes/routes'
 // helpers
 import FetchHook from 'hooks/fetchHook/fetchHook'
+import MainSearchBar from 'components/typeOfProduct/mainSearchBar'
+import TitleMainProduct from 'components/typeOfProduct/titleMainProduct'
+import LineSeparetor from 'components/lineSeparetor/lineSeparetor'
 
 const products = [
     {
@@ -88,9 +91,16 @@ function MainHome (){
       <Header search="false"/>
         </div>
         <div>
+        <div className="bg-white py-24 sm:py-20">
+       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <TitleMainProduct title='Search'/>
+        <MainSearchBar/>
+         <LineSeparetor/>
             <CardTypeProduct
             data={data}
             />
+             </div>
+      </div>
         </div>
       </div>
   )
