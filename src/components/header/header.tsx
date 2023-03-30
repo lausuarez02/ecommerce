@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 //components
 import CartIcon from 'components/cart/cartIcon/cartIcon';
 import SearchIcon from 'components/Search/searchIcon';
+import { Link } from 'react-router-dom';
 
 export const Header = ({search = "true"}:any) => {
   const [searchData,setSearchData ] = useState()
@@ -22,7 +23,7 @@ export const Header = ({search = "true"}:any) => {
 
             {/* Logo */}
             <div className="ml-4 flex lg:ml-0">
-              <a href="#">
+              <Link to='/'>
                 <span className="sr-only">Companies</span>
                 Companies
                 {/* <img
@@ -30,7 +31,7 @@ export const Header = ({search = "true"}:any) => {
                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                   alt=""
                 /> */}
-              </a>
+              </Link>
             </div>
 
             {/* Flyout menus */}
@@ -70,13 +71,19 @@ export const Header = ({search = "true"}:any) => {
 
           {/* Flyout menus */}
 
-
           <div className="ml-auto flex items-center">
             {/* Search */}
             {/* Cart */}
             <div className="ml-4 flow-root lg:ml-6">
               <div >
                 <CartIcon/>
+              </div>
+            </div>
+            <div className="ml-4 flow-root lg:ml-6">
+              <div >
+              <Link to='/login'>
+                Login
+                </Link>
               </div>
             </div>
           </div>

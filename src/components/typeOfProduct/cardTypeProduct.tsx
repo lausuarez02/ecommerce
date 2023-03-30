@@ -3,10 +3,7 @@ import {useState, useEffect} from 'react';
 import {Link } from 'react-router-dom'
 import {productData} from 'redux/reducers/productReducer';
 //components
-import MainSearchBar from './mainSearchBar'
 import TitleMainProduct from './titleMainProduct'
-import LineSeparetor from 'components/lineSeparetor/lineSeparetor'
-
 
 const products = [
   {
@@ -57,6 +54,11 @@ const products = [
 function CardTypeProduct({data}:any) {
   console.log(data, 'testing CardTypePorduct')
 
+
+  
+  if(data === null){
+    return <div>Not Data found</div>
+  }
   // const [newdata, setNewData] = useState()
 
   // const fetchData = async () => {
@@ -73,12 +75,8 @@ function CardTypeProduct({data}:any) {
   //   },[])
 
   return (
-<div className="bg-white py-24 sm:py-20">
-  <div className="mx-auto max-w-7xl px-6 lg:px-8">
-  <TitleMainProduct title='Search'/>
-    <MainSearchBar/>
-    <LineSeparetor/>
 
+<div>
     <div className="bg-white py-24 sm:py-32">
     <TitleMainProduct title='Type of Products'/>
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -102,7 +100,6 @@ function CardTypeProduct({data}:any) {
         <div>Loading</div>}
   </div>
 </div>
-  </div>
 </div>
   )
 }
