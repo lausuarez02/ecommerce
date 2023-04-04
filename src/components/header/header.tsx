@@ -1,15 +1,27 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
+//utils
+import { signInWithGoogle, handleRedirectResult, auth} from 'firebaseReact/firebase'
+import { useEffect, useState, useMemo } from 'react'
 import { useSelector } from 'react-redux';
 //components
 import CartIcon from 'components/cart/cartIcon/cartIcon';
 import SearchIcon from 'components/Search/searchIcon';
 import { Link } from 'react-router-dom';
+import UserIconHeader from 'components/userIconHeader/userIconHeader';
 
 export const Header = ({search = "true"}:any) => {
-  const [searchData,setSearchData ] = useState()
+  const [searchData,setSearchData ] = useState() as any
   const dataSearch = useSelector((state:any) => state)
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if(user){
+        setSearchData(user)
+      }else{
+        console.error('error when onAuthStateChanged')
+      }
+    })
+    handleRedirectResult()
+  }, [])
 
   return (
     <div className="bg-white">
@@ -80,11 +92,21 @@ export const Header = ({search = "true"}:any) => {
               </div>
             </div>
             <div className="ml-4 flow-root lg:ml-6">
-              <div >
-              <Link to='/login'>
+             {searchData ? (<
+              Link to='/authlogin'>
+               <UserIconHeader src={searchData.photoURL}/>
+             </Link>
+             ) 
+             : 
+             (              
+             <div onClick={() => signInWithGoogle()}>
+              Sing in
+             </div>
+              )}
+
+              {/* <Link to='/authlogin'>
                 Login
-                </Link>
-              </div>
+                </Link> */}
             </div>
           </div>
         </div>
