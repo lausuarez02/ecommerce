@@ -7,21 +7,15 @@ import CartIcon from 'components/cart/cartIcon/cartIcon';
 import SearchIcon from 'components/Search/searchIcon';
 import { Link } from 'react-router-dom';
 import UserIconHeader from 'components/userIconHeader/userIconHeader';
+//helpers
+import { AuthState } from 'helpers/authState/authState';
 
 export const Header = ({search = "true"}:any) => {
-  const [searchData,setSearchData ] = useState() as any
   const dataSearch = useSelector((state:any) => state)
+  const authState = useSelector((state:any) => state)
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      if(user){
-        setSearchData(user)
-      }else{
-        console.error('error when onAuthStateChanged')
-      }
-    })
-    handleRedirectResult()
-  }, [])
+  AuthState()
+  const {userData: {isAuth, userProfile}} = authState
 
   return (
     <div className="bg-white">
@@ -92,21 +86,17 @@ export const Header = ({search = "true"}:any) => {
               </div>
             </div>
             <div className="ml-4 flow-root lg:ml-6">
-             {searchData ? (<
-              Link to='/authlogin'>
-               <UserIconHeader src={searchData.photoURL}/>
+             {isAuth ? (
+              <Link to='/user'>
+               <UserIconHeader src={userProfile[0].photoURL}/>
              </Link>
              ) 
              : 
-             (              
-             <div onClick={() => signInWithGoogle()}>
-              Sing in
-             </div>
+             (       
+              <Link to='/authLogin'>
+                Sign In
+              </Link>
               )}
-
-              {/* <Link to='/authlogin'>
-                Login
-                </Link> */}
             </div>
           </div>
         </div>

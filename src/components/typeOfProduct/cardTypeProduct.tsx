@@ -4,6 +4,7 @@ import {Link } from 'react-router-dom'
 import {productData} from 'redux/reducers/productReducer';
 //components
 import TitleMainProduct from './titleMainProduct'
+import LoadingSpinner from 'components/loading/Loading';
 
 const products = [
   {
@@ -97,7 +98,7 @@ function CardTypeProduct({data}:any) {
            </Link>
            </div>
         )}) : 
-        <div>Loading</div>}
+        <LoadingSpinner/>}
   </div>
 </div>
 </div>

@@ -3,12 +3,16 @@ import { createSlice } from '@reduxjs/toolkit';
 const dataSlice = createSlice({
     name: 'userData',
     initialState: {
-        isAuth: null,
+        userProfile: [],
+        isAuth: false,
     },
     reducers: {
+        userAuth : (state:any, action) => {
+            state.isAuth = action.payload
+        },
         mainUserData : (state:any, action) => {
-            state.isAuth.length = 0;
-            state.isAuth.push(action.payload)
+            state.userProfile.length = 0
+            state.userProfile.push(action.payload)
         }
     }
 })
@@ -16,5 +20,6 @@ const dataSlice = createSlice({
 
 export const userData = dataSlice.reducer;
 export const {
+    userAuth,
     mainUserData
 } = dataSlice.actions

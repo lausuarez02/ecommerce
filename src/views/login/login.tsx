@@ -1,16 +1,23 @@
 //utils
-import React from "react"
+import React, {useEffect,useState} from "react"
 //components
-import UserCard from "components/userCard/userCard";
 import ArrowLeft from 'components/arrowLeft/arrowLeft'
- 
+import UserCard from "components/userCard/userCard";
+// auth
+import { signInWithGoogle} from 'firebaseReact/firebase'
+// redux
+import { useSelector } from "react-redux";
 
 const Login = () => {
+  const user = useSelector((state:any) => state);
+  const {userData: {userProfile:[{name, email, photoURL}]}} = user
     return(
-        <div>
+        <React.Fragment>
             <ArrowLeft/>
-            <UserCard/>
-        </div>
+            {/* partial fix */}
+            <br></br>
+            <UserCard email={email} name={name} photo={photoURL}/>
+        </React.Fragment>
     )
 }
 

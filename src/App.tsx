@@ -8,6 +8,8 @@ import Home from 'views/home/Home';
 import Product from 'views/product/Product';
 import MainHome from 'views/mainHome/MainHome';
 import Login from 'views/login/login';
+import Auth from 'views/auth/Auth';
+import NotFound from 'components/notFound/notFound'
 //utils
 import ProtectedRoute from './utils/protectedRoutes';
 
@@ -31,12 +33,13 @@ function App() {
         <Route path='/cart' element={<Cart />}/>
         <Route path='/product/:id' element={<Product/>}/>
         {/* <Route path='/test' element={<Home/}/> */}
-        <Route path='/authlogin' element={
+        <Route path='/user' element={
                 <ProtectedRoute>
                   <Login/>
                   </ProtectedRoute>
                 }/>
-        <Route path="*" element={<p>There's nothing here: 404!</p>} /> 
+        <Route path='/authLogin' element={<Auth/>} />
+        <Route path="*" element={<NotFound/>} /> 
       </Routes>
       </Provider>
     </BrowserRouter>

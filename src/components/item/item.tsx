@@ -4,6 +4,7 @@ import {Link, useNavigate} from 'react-router-dom'
 import {productData} from 'redux/reducers/productReducer';
 import { useEffect, useState } from 'react';
 //components
+import LoadingSpinner from 'components/loading/Loading';
 
 function Item({newData}:any) {
  
@@ -61,7 +62,7 @@ function Item({newData}:any) {
                 </div>
         )
         }) :
-        <div>Loading</div>
+        <LoadingSpinner/>
         }
 </div>
 </div>

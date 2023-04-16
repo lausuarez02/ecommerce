@@ -1,7 +1,6 @@
 import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { incrementQuantity, decrementQuantity, addToCart,removeItem} from 'redux/reducers/cartReducer'
-import { useDispatch, useSelector } from 'react-redux'
+import { incrementQuantity, decrementQuantity,removeItem} from 'redux/reducers/cartReducer'
+import { useDispatch } from 'react-redux'
 import CartBottom from '../cartBotton/cartBottom'
 import ArrowLeft from 'components/arrowLeft/arrowLeft'
 
