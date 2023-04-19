@@ -7,7 +7,7 @@ const dataSlice = createSlice({
     },
     reducers: {
        mainSearchData: (state:any, action) => {
-        console.log(action.payload, "teso1")
+        state.dataSearch.length = 0;
         state.dataSearch.push(action.payload)
     },
 }

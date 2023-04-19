@@ -15,13 +15,15 @@ import {
 import { cartReducer } from "redux/reducers/cartReducer";
 import {searchReducer} from "redux/reducers/searchReducer";
 import { productReducer } from 'redux/reducers/productReducer';
+import { userData } from 'redux/reducers/user';
 
 
 //Here we can add as much reducers as we want
 const rootReducer = combineReducers({ 
   cart:cartReducer,
   search:searchReducer,
-  productItem: productReducer
+  productItem: productReducer,
+  userData: userData
 })
 
 //Here is the persist configuration where we are blaclisting search to not persis it storage

@@ -1,11 +1,21 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Popover, Tab, Transition } from '@headlessui/react'
-import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon } from '@heroicons/react/24/outline'
+//utils
+import { signInWithGoogle, handleRedirectResult, auth} from 'firebaseReact/firebase'
+import { useEffect, useState, useMemo } from 'react'
+import { useSelector } from 'react-redux';
 //components
-import CartIcon from 'components/cart/cartIcon';
+import CartIcon from 'components/cart/cartIcon/cartIcon';
 import SearchIcon from 'components/Search/searchIcon';
+import { Link } from 'react-router-dom';
+import UserIconHeader from 'components/userIconHeader/userIconHeader';
+//helpers
+import { AuthState } from 'helpers/authState/authState';
 
 export const Header = ({search = "true"}:any) => {
+  const dataSearch = useSelector((state:any) => state)
+  const authState = useSelector((state:any) => state)
+
+  AuthState()
+  const {userData: {isAuth, userProfile}} = authState
 
   return (
     <div className="bg-white">
@@ -19,7 +29,7 @@ export const Header = ({search = "true"}:any) => {
 
             {/* Logo */}
             <div className="ml-4 flex lg:ml-0">
-              <a href="#">
+              <Link to='/'>
                 <span className="sr-only">Companies</span>
                 Companies
                 {/* <img
@@ -27,14 +37,14 @@ export const Header = ({search = "true"}:any) => {
                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
                   alt=""
                 /> */}
-              </a>
+              </Link>
             </div>
 
             {/* Flyout menus */}
 
             <div className="ml-auto flex items-center">
               {/* Search */}
-              <SearchIcon/>
+              <SearchIcon search={dataSearch}/>
               {/* Cart */}
               <div className="ml-4 flow-root lg:ml-6">
                 <div >
@@ -67,7 +77,6 @@ export const Header = ({search = "true"}:any) => {
 
           {/* Flyout menus */}
 
-
           <div className="ml-auto flex items-center">
             {/* Search */}
             {/* Cart */}
@@ -75,6 +84,19 @@ export const Header = ({search = "true"}:any) => {
               <div >
                 <CartIcon/>
               </div>
+            </div>
+            <div className="ml-4 flow-root lg:ml-6">
+             {isAuth ? (
+              <Link to='/user'>
+               <UserIconHeader src={userProfile[0].photoURL}/>
+             </Link>
+             ) 
+             : 
+             (       
+              <Link to='/authLogin'>
+                Sign In
+              </Link>
+              )}
             </div>
           </div>
         </div>

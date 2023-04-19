@@ -3,10 +3,8 @@ import {useState, useEffect} from 'react';
 import {Link } from 'react-router-dom'
 import {productData} from 'redux/reducers/productReducer';
 //components
-import MainSearchBar from './mainSearchBar'
 import TitleMainProduct from './titleMainProduct'
-import LineSeparetor from 'components/lineSeparetor/lineSeparetor'
-
+import LoadingSpinner from 'components/loading/Loading';
 
 const products = [
   {
@@ -54,8 +52,14 @@ const products = [
   }
   // More products...
 ]
-function CardTypeProduct({newData}:any) {
+function CardTypeProduct({data}:any) {
+  console.log(data, 'testing CardTypePorduct')
 
+
+  
+  if(data === null){
+    return <div>Not Data found</div>
+  }
   // const [newdata, setNewData] = useState()
 
   // const fetchData = async () => {
@@ -72,16 +76,12 @@ function CardTypeProduct({newData}:any) {
   //   },[])
 
   return (
-<div className="bg-white py-24 sm:py-20">
-  <div className="mx-auto max-w-7xl px-6 lg:px-8">
-  <TitleMainProduct title='Search'/>
-    <MainSearchBar/>
-    <LineSeparetor/>
 
+<div>
     <div className="bg-white py-24 sm:py-32">
     <TitleMainProduct title='Type of Products'/>
   <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        {newData != undefined ? (newData['products'] as unknown as any[] ).map((item:any) => {
+        {data != undefined ? (data[0]['products'] as Object as any[] ).map((item:any) => {
             return(
             <div key={item.id} className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
               <Link to={item.color}>
@@ -98,10 +98,9 @@ function CardTypeProduct({newData}:any) {
            </Link>
            </div>
         )}) : 
-        <div>Loading</div>}
+        <LoadingSpinner/>}
   </div>
 </div>
-  </div>
 </div>
   )
 }

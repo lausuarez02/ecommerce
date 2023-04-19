@@ -1,6 +1,6 @@
 import { useState } from 'react'
 //components
-import CartBottom from 'components/cart/cartBottom'
+import CartBottom from '../cartBotton/cartBottom'
 import ArrowLeft from 'components/arrowLeft/arrowLeft'
 
 const CartEmpty = () => {
@@ -31,7 +31,7 @@ const CartEmpty = () => {
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <h1>
                             
-                            <a href="test">Cart is empty</a>
+                            <a href="test" data-testid="cartEmpty">Cart is empty</a>
                           </h1>
                         </div>
                         <p className="mt-1 text-sm text-gray-500"></p>

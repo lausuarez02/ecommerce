@@ -14,7 +14,7 @@ const mockedUsedNavigate = jest.fn()
 
 jest.mock('react-router-dom', () => ({
     ...(jest.requireActual('react-router-dom') as any),
-    useNavigate: () => mockedUsedNavigate,
+    useNavigate: () => mockedUsedNavigate
 }))
    
 
@@ -53,7 +53,6 @@ describe('SearchIcon component', () => {
     it('Should dispatch func when deboundeTerm not empty', () => {
          const mockDispatch = jest.fn()
         mockDispatch()
-
         const {divElement} = setUp()
         const {input} = setUp()
         fireEvent.change(input, {target: {value: 'test'}});

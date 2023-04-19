@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import {render, fireEvent, screen} from '@testing-library/react';
 import {createStore} from 'redux'
 import { BrowserRouter, useNavigate } from 'react-router-dom';
+import { shallow } from 'enzyme';
 
 const mockedUsedNavigate = jest.fn();
 
@@ -64,6 +65,12 @@ describe('testing ArrowLeft', () => {
         const {divElement} = setUp()
         const mockDispatch = jest.fn()
         mockDispatch();
+
+        // const wrapper = shallow(<ArrowLeft />);
+        // const instance = wrapper.instance();
+        // // const spy = jest.spyOn(instance, 'navigate') as any;
+        
+
         // (useNavigate as any).mockReturnValue(-1)
         // useNavigate()
         fireEvent.click(divElement);
