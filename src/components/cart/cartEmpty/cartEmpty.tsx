@@ -1,17 +1,18 @@
 import { useState } from 'react'
 //components
-import CartBottom from 'components/cart/cartBottom'
+import CartBottom from 'components/cart/cartBotton/cartBottom'
+import ArrowLeft from 'components/arrowLeft/arrowLeft'
 
 const CartEmpty = () => {
   const BACK = '/'
 
     return(
         <div className="relative z-10">
-
         <div className="fixed inset-0 overflow-hidden">
           <div className="inset-0 overflow-hidden">
             <div className="pointer-events-none fixed inset-y-0 flex">
                 <div className="pointer-events-auto w-screen">
+                <ArrowLeft/>
                   <div className="flex h-full flex-col bg-white shadow-xl">
                     <div className="flex-1 overflow-y-auto py-6 px-4 sm:px-6">
           <div className="flex items-start justify-between">
@@ -29,7 +30,8 @@ const CartEmpty = () => {
                       <div>
                         <div className="flex justify-between text-base font-medium text-gray-900">
                           <h1>
-                            <a href="test">Cart is empty</a>
+                            
+                            <a href="test" data-testid="cartEmpty">Cart is empty</a>
                           </h1>
                         </div>
                         <p className="mt-1 text-sm text-gray-500"></p>
