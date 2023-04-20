@@ -1,10 +1,6 @@
 import { useState } from 'react'
 //components
-<<<<<<< HEAD
-import CartBottom from '../cartBotton/cartBottom'
-=======
 import CartBottom from 'components/cart/cartBotton/cartBottom'
->>>>>>> 4f54302 (fix new changes regarding tests)
 import ArrowLeft from 'components/arrowLeft/arrowLeft'
 
 const CartEmpty = () => {
