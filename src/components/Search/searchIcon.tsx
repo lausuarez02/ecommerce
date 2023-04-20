@@ -6,7 +6,7 @@ import {useLocation, useNavigate} from 'react-router-dom';
 
 interface SearchData {
   search?: {
-    search: any
+    search?: any
   }
 }
 
