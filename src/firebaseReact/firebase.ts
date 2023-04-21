@@ -1,9 +1,10 @@
 
 // Import the functions you need from the SDKs you need
 import {initializeApp} from "firebase/app";
-import { getAuth, signInWithRedirect,setPersistence,onAuthStateChanged, getRedirectResult,GoogleAuthProvider, inMemoryPersistence ,browserLocalPersistence} from "firebase/auth";
+import { getAuth, signInWithRedirect, getRedirectResult,GoogleAuthProvider, signOut} from "firebase/auth";
 import { getAnalytics } from "firebase/analytics";
-import { useState } from "react";
+import { useDispatch } from "react-redux"; 
+import { userAuth,mainUserData } from "redux/reducers/user";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-librariesç
 
@@ -26,9 +27,7 @@ const analytics = getAnalytics(app);
 
 export const auth = getAuth(app)
 
-// setPersistence(auth, browserLocalPersistence)
-
-
+//Sing In google
 export const signInWithGoogle = () => {
       const googleProvider = new GoogleAuthProvider()
 
@@ -36,21 +35,7 @@ export const signInWithGoogle = () => {
     
 };
 
-
-// export const authStateChangedFunction = () => {
-//   return onAuthStateChanged(auth, (user) => {
-//   if (user) {
-//     // User is signed in, see docs for a list of available properties
-//     // https://firebase.google.com/docs/reference/js/firebase.User
-//     const uid = user.uid;
-//     // ...
-//   } else {
-//     // User is signed out
-//     // ...
-//   }
-// });
-
-
+//Redirect user when fullfilled and when we received an error
 export const handleRedirectResult = async () => {
   try {
     const result = await getRedirectResult(auth);
@@ -62,6 +47,17 @@ export const handleRedirectResult = async () => {
     // handle the error
   }
 };
+
+export const UserSingOutGoogle = async () => {
+
+  try{
+    const result = await signOut(auth);
+    console.log('sign out succesfull', result)
+  }catch(e){
+    console.error(e, 'error when sign out')
+  }
+}
+
 
 //  const user = auth.currentUser
 
