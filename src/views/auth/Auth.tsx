@@ -6,10 +6,14 @@ import { useSelector } from "react-redux";
 import {Navigate} from "react-router-dom"
 //components
 import SingIn from "components/singIn/SingIn";
+//helpers
+import { AuthState } from 'helpers/authState/authState';
 
 const Auth = () => {
     const user = useSelector((state:any) => state);
-    const {userData: {isAuth}} = user
+    const {userData: {isAuth}} = user;
+
+    AuthState();
 
     if(isAuth){
         return( <Navigate to={{
