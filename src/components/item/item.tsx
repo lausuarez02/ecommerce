@@ -5,6 +5,7 @@ import {productData} from 'redux/reducers/productReducer';
 import { useEffect, useState } from 'react';
 //components
 import LoadingSpinner from 'components/loading/Loading';
+import { SeparteStringWithPlus } from 'helpers/productHelper/productHelper';
 
 function Item({newData}:any) {
  
@@ -35,7 +36,7 @@ function Item({newData}:any) {
                 <div key={product.id}>
                   <div className="group relative" >
                     <Link to={{
-    pathname: "/product/" + product.title,
+    pathname: "/product/" + SeparteStringWithPlus(product.title),
     search: "?",
   }} /*state={{data: product}}*/ onClick={(e) => dispatch(productData({product}))}>
         <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80 group relative">
