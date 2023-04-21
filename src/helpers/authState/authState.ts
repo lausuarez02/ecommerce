@@ -20,4 +20,3 @@ export const AuthState = () => {
         handleRedirectResult()
       }, [])
 }
-
