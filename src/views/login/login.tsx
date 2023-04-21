@@ -3,6 +3,7 @@ import React, {useEffect,useState} from "react"
 //components
 import ArrowLeft from 'components/arrowLeft/arrowLeft'
 import UserCard from "components/userCard/userCard";
+import SingOut from "components/singOut/SignOut";
 // auth
 import { signInWithGoogle} from 'firebaseReact/firebase'
 // redux
@@ -17,6 +18,7 @@ const Login = () => {
             {/* partial fix */}
             <br></br>
             <UserCard email={email} name={name} photo={photoURL}/>
+            <SingOut/>
         </React.Fragment>
     )
 }
