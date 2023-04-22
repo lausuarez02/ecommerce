@@ -34,7 +34,7 @@ const SearchIcon = ({search}:SearchData) => {
         if(debouncedTerm !== ''){
             // onSearchSubmit(term);
             dispatch(mainSearchData(debouncedTerm))
-            navigate(pathName)
+            navigate(pathName + `?search=${debouncedTerm}`)
         }
         else{
           dispatch(mainSearchData(''))
@@ -46,8 +46,8 @@ const SearchIcon = ({search}:SearchData) => {
       if(debouncedTerm !== ''){
         // onSearchSubmit(term);
         dispatch(mainSearchData(debouncedTerm))
-        navigate(pathName)
-    }
+        navigate(pathName + `?search=${debouncedTerm}`)
+      }
     else{
       dispatch(mainSearchData(''))
     }
@@ -94,7 +94,7 @@ const SearchIcon = ({search}:SearchData) => {
     onChange={e => inputOnChange(e.target.value)}
     value={debouncedTerm}
   />
-     } 
+     }
   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
   <span className="sr-only">Search</span>
   <div  data-testid="SearchSubmitButton" onClick={() => SearchSubmitButton()} >

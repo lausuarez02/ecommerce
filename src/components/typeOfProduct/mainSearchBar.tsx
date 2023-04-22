@@ -12,7 +12,7 @@ const MainSearchBar = () => {
   const SearchSubmitButton = () => {
         if(debouncedTerm !== ''){
             dispatch(mainSearchData(debouncedTerm))
-            navigate(debouncedTerm)
+            navigate(`products?search=${debouncedTerm}`)
         }
         else{
           dispatch(mainSearchData(''))
