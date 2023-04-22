@@ -6,8 +6,9 @@ import useFetch from 'helpers/fetchHelper'
 import routes from 'routes/routes'
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import {useNavigate} from 'react-router-dom'
 import FetchHook from 'hooks/fetchHook/fetchHook'
+import {useLocation} from 'react-router-dom';
+import NotFound from 'components/notFound/notFound'
 // process.env
 
 
@@ -83,23 +84,25 @@ const products = [
 
 function Home (){
   const { products: { testRoute}} = routes
+  const pathName = useLocation().pathname
 
   const { error, data } = FetchHook({
     url: new URL(testRoute),
   })
 
   // console.log(data, 'testing homedata' )
-
+ 
   //getting the data from the search the user made
   const cart = useSelector((state:any) => (console.log(state, "test"), state.search.dataSearch))
   
   // Getting the last search from the array made when the user make a search
   const lastSearch = cart[cart.length -1]
-  console.log(lastSearch, "testproduct")
   
+  if(pathName !== '/products'){
+    return <NotFound/>
+  }
   //
-  const key = process.env.REACT_APP_API_KEY
-  console.log(key)
+  // const key = process.env.REACT_APP_API_KEY
 
   // useEffect(() => {
   //   try{
