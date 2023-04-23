@@ -7,7 +7,7 @@ interface hookData {
     revalidate?: boolean
 }
 
-const FetchHook = ({url, type='GET', body, revalidate}:hookData) => {
+const useFetch = ({url, type='GET', body, revalidate}:hookData) => {
     const [data,setData] = useState(null)
     const [error,setError] = useState<any>()
     const [loading,setLoading] = useState(false)
@@ -39,4 +39,4 @@ const FetchHook = ({url, type='GET', body, revalidate}:hookData) => {
     };
 };
 
-export default FetchHook
+export default useFetch
