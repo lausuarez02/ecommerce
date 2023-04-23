@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const dataSlice = createSlice({
     name: 'dataSearch',
     initialState: {
-        dataSearch: [],
+        dataSearch: [false],
     },
     reducers: {
        mainSearchData: (state:any, action) => {

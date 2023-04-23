@@ -7,24 +7,15 @@ import { useEffect, useState } from 'react';
 import LoadingSpinner from 'components/loading/Loading';
 import { SeparteStringWithPlus } from 'helpers/productHelper/productHelper';
 
-function Item({newData}:any) {
+function Item({newData=false}:any) {
+
+  console.log(newData, 'testing newData value')
  
-  console.log(newData, "testing newData")
-
-  // console.log(productsData, 'testing produc datas')
-    // const {id, image, title, price} = newData
-    // const mapObject = newData.map((item: any) => {return(item.id, item.image, item.title, item.price)} )
   const dispatch = useDispatch()
-  // const navigate = useNavigate();
 
-  // const destructuringLink = (url:string) => {
-  //   let newString = '1';
-  //   for(let i = 0; i < url.length; i++){
-  //     newString += url[i] 
-  //   }
-  //   return newString
-  // }
-
+  if(newData === false){
+    return <LoadingSpinner/>
+  }
   return (
     <div className="bg-white">
   <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -63,8 +54,8 @@ function Item({newData}:any) {
                 </div>
         )
         }) :
-        <LoadingSpinner/>
-        }
+        <div>no data</div>
+}
 </div>
 </div>
   </div>

@@ -19,18 +19,18 @@ function Home (){
 
  
   //getting the data from the search the user made
-  const cart = useSelector((state:any) => (console.log(state, "test"), state.search.dataSearch))
+  const search = useSelector((state:any) => (console.log(state, "test"), state.search.dataSearch))
   
   // Getting the last search from the array made when the user make a search
-  const lastSearch = cart[cart.length -1]
+  const lastSearch = search[search.length -1]
   
   if(pathName !== '/products'){
     return <NotFound/>
   }
 
   return (
-    lastSearch === null ?
-    <div>test</div> :
+    lastSearch === false ?
+    <NotFound/> :
     <div className="home">
       <div className="home__container ">
       <Header/>
