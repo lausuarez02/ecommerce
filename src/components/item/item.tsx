@@ -7,10 +7,7 @@ import { useEffect, useState } from 'react';
 import LoadingSpinner from 'components/loading/Loading';
 import { SeparteStringWithPlus } from 'helpers/productHelper/productHelper';
 
-function Item({newData=false}:any) {
-
-  console.log(newData, 'testing newData value')
- 
+function Item({newData=false}:any) { 
   const dispatch = useDispatch()
 
   if(newData === false){

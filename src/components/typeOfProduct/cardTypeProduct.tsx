@@ -1,80 +1,12 @@
-import { useDispatch } from 'react-redux';
-import {useState, useEffect} from 'react';
 import {Link } from 'react-router-dom'
-import {productData} from 'redux/reducers/productReducer';
 //components
 import TitleMainProduct from './titleMainProduct'
 import LoadingSpinner from 'components/loading/Loading';
 
-const products = [
-  {
-    id: 1,
-    title: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '90.00',
-    quantity: 1,
-    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    title: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '32.00',
-    quantity: 1,
-    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  {
-    id: 3,
-    title: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '32.00',
-    quantity: 1,
-    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  {
-    id: 4,
-    title: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '32.00',
-    quantity: 1,
-    image: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  }
-  // More products...
-]
-function CardTypeProduct({data}:any) {
-  console.log(data, 'testing CardTypePorduct')
-
-
-  
+function CardTypeProduct({data}:any) {  
   if(data === null){
     return <div>Not Data found</div>
   }
-  // const [newdata, setNewData] = useState()
-
-  // const fetchData = async () => {
-  //   try{
-  //     let response = await fetch('http://127.0.0.1:4005/data')
-  //     let json = await response.json();
-  //     setNewData(json);
-  //   }catch(e){
-  //     console.log(e)
-  //   }}
-
-  //   useEffect(() => {
-  //     fetchData()
-  //   },[])
-
   return (
 
 <div>

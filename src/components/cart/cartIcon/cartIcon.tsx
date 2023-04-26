@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 const CartIcon = () => {
     const navigate = useNavigate()
     const cart = useSelector((state:any) => state.cart)
-    console.log("new cart",cart)
     const getTotalQuantity = () => {
         let total = 0
         if(typeof(cart.cart) !== 'undefined'){

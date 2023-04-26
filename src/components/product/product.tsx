@@ -73,9 +73,7 @@ export default function Products(props:any) {
   type Product = {
     state?:{data?: {}}
   }
-  const productItem = useSelector((state:any) => (console.log(state.productItem, "testProduct001"), state.productItem.product))
-  console.log("new ProductItem test",productItem)
-
+  const productItem = useSelector((state:any) => ( state.productItem.product))
   const loopOverItem = (product: any) => {
     product.forEach((item:any, index:any) => {
       setProductData(item)
@@ -88,7 +86,6 @@ export default function Products(props:any) {
 
     const preventingReRendering = (e:any) => {
       e.preventDefault();
-      console.log(productItem, "productItem New test")
       dispatch(addToCart({id:idData,image:imageData, title:titleData,price:priceData }))
     }
 
@@ -97,7 +94,6 @@ export default function Products(props:any) {
    },[productItem])
  
   const dispatch = useDispatch()
-  console.log(productData, "Item test 00")
  
   return (
     <div className="bg-white">
