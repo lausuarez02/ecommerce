@@ -6,6 +6,9 @@ import { useEffect, useState } from 'react';
 //components
 import LoadingSpinner from 'components/loading/Loading';
 import { SeparteStringWithPlus } from 'helpers/productHelper/productHelper';
+//mockErrorData
+import errorImage from 'ErrorMockData/itemMockData/question-mark-vector-icon.webp'
+import {TITLE_ITEM} from 'ErrorMockData/itemMockData/errorData'
 
 function Item({newData=false}:any) { 
   const dispatch = useDispatch()
@@ -43,15 +46,29 @@ function Item({newData=false}:any) {
         </div>
         </Link>
         </div>
-                {/* <button 
-                onClick={() => 
-          dispatch(addToCart(
-           { product}
-           ))} className="mt-1 text-sm text-gray-500">ted</button> */}
                 </div>
         )
         }) :
-        <div>no data</div>
+        <div>
+        <div className="group relative" >
+      
+            <div className="min-h-80 aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-80 group relative">
+            <img src={errorImage} alt="Front of men&#039;s Basic Tee in black." className="h-full w-full object-cover object-center lg:h-full lg:w-full"/>
+            </div>
+            <div className="mt-4 flex justify-between">
+            <div>
+              <h3 className="text-sm text-gray-700">
+              
+                  <span aria-hidden="true" className="absolute inset-0"></span>
+                  {TITLE_ITEM}              
+              </h3>
+            </div>
+            <p className="text-sm font-medium text-gray-900">$35</p>
+            </div>
+            </div>
+      </div>
+        // <div>no data</div>
+        
 }
 </div>
 </div>
