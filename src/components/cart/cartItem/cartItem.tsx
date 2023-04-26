@@ -1,7 +1,6 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import { incrementQuantity, decrementQuantity, addToCart,removeItem} from 'redux/reducers/cartReducer'
-import { useDispatch, useSelector } from 'react-redux'
+import {  useState } from 'react'
+import { incrementQuantity, decrementQuantity,removeItem} from 'redux/reducers/cartReducer'
+import { useDispatch } from 'react-redux'
 import CartBottom from 'components/cart/cartBotton/cartBottom'
 import ArrowLeft from 'components/arrowLeft/arrowLeft'
 
@@ -17,10 +16,7 @@ interface Cart {
 function CartItem({cart}:Cart) {
   const dispatch = useDispatch()
   const [open, setOpen] = useState(true)
-  // const [totalSumProduct, setTotalSumProduct] = useState(0)
 
-  // const cartTest = useSelector((state:any) => state.cart)
-  // console.log(cartTest)
   const avoidDefaultBeh = (e:any, item:any) => {
     e.preventDefault();
     dispatch(removeItem(item))
@@ -43,7 +39,6 @@ function CartItem({cart}:Cart) {
   })
   return sum
 }
-  console.log(cart, "cart test")
   return (
       <div className="relative z-10">
      
@@ -92,9 +87,6 @@ function CartItem({cart}:Cart) {
                                     <p className="mt-1 text-sm text-gray-500"></p>
                                   </div>
                                   <div className="flex flex-1 items-end justify-between text-sm">
-                                    {/* <div className="flex">
-                                    </div> */}
-                                    {/* <p className="text-gray-500"> + </p> */}
                                     <div className="flex">
                                       <button
                                         type="button"
@@ -118,11 +110,6 @@ function CartItem({cart}:Cart) {
                                 <div className="flex justify-between text-base font-medium text-gray-900">
                                 <p>Subtotal</p>
                                 <p>${totalSum(cart)}</p>
-                                {/* {(cart as unknown as any[]).map((item:any) => {
-                              return(
-                        <p>${totalSum(item.quantity, item.price)}</p>
-                        )
-                      })} */}
                         </div>
                        
                       <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
@@ -146,9 +133,6 @@ function CartItem({cart}:Cart) {
                   </div>
               
                 </div>
-                
-                  {/* )
-                })} */}
             </div>
           
           </div>
@@ -157,30 +141,6 @@ function CartItem({cart}:Cart) {
       </div>
   )
 }
-
-
-
-  // return (
-  //   <div className="cartItem">
-  //     <div className="cartItem__info">
-  //       <p className="cartItem__title">{title}</p>
-  //       <p className="cartItem__price">
-  //         <small>$</small>
-  //         <strong>{price}</strong>
-  //       </p>
-  //       <div className='cartItem__incrDec'>
-  //         <button onClick={() => dispatch(decrementQuantity(id))}>-</button>
-  //         <p>{quantity}</p>
-  //         <button onClick={() => dispatch(incrementQuantity(id))}>+</button>
-  //       </div>
-  //       <button
-  //         className='cartItem__removeButton' 
-  //         onClick={() => dispatch(removeItem(id))}>
-  //           Remove
-  //       </button>
-  //     </div>
-  //   </div>
-  // )
 
 
 export default CartItem

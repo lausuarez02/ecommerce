@@ -10,7 +10,6 @@ function Total() {
     cart.forEach((item:any) => {
       totalQuantity += item.quantity
       totalPrice += parseFloat(item.price) * item.quantity
-      console.log(item)
     })
 
     return {totalPrice, totalQuantity}

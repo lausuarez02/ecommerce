@@ -20,7 +20,6 @@ const SearchIcon = ({search}:SearchData) => {
     if(search !== undefined){
       const {search: {dataSearch}} = search
       setDebouncedTerm(dataSearch[0])
-      // console.log(dataSearch[0])
     }
   }, [])
 
@@ -32,7 +31,6 @@ const SearchIcon = ({search}:SearchData) => {
 
   const SearchSubmitButton = () => {
         if(debouncedTerm !== ''){
-            // onSearchSubmit(term);
             dispatch(mainSearchData(debouncedTerm))
             navigate(pathName + `?search=${debouncedTerm}`)
         }
@@ -44,7 +42,6 @@ const SearchIcon = ({search}:SearchData) => {
   const handleKeyDown = (e:any) => {
     if(e.key === 'Enter'){
       if(debouncedTerm !== ''){
-        // onSearchSubmit(term);
         dispatch(mainSearchData(debouncedTerm))
         navigate(pathName + `?search=${debouncedTerm}`)
       }
@@ -57,17 +54,6 @@ const SearchIcon = ({search}:SearchData) => {
     const inputOnChange = (e:any) => {
       setDebouncedTerm(e)
     }
-
-  // submit a new search without clickng button
-  //   useEffect(() => {
-  //     if(term !== ''){
-  //         // onSearchSubmit(term);
-  //         dispatch(mainSearchData(term))
-  //     }
-  //     else{
-  //         clearResults();
-  //     }
-  // }, [term]);
 
   return (
     <div className="flex lg:ml-6">

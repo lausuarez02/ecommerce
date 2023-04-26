@@ -8,8 +8,6 @@ const productSlice = createSlice({
     reducers: {
     productData: (state:any, action) => {
         state.product.length = 0
-        console.log("productData test00: ", state)
-        console.log("productData test01:", action.payload)
         const item:any = state.product.find((item:any) => item.id !== action.payload.product.id )
         state.product.push({...action.payload.product, quantity: 1})
         

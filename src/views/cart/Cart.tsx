@@ -7,8 +7,6 @@ import CartEmpty from 'components/cart/cartEmpty/cartEmpty'
 function Cart() {
 
   const cart = useSelector((state:any) => state.cart)
-  console.log(cart, "Cart view")
-
   return (
     <div className="cart">
         <div>

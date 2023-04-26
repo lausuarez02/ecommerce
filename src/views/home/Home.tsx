@@ -18,7 +18,6 @@ function Home (){
   //Getting the params from ?search=something
   const [searchParams] = useSearchParams();
   const urlValue = searchParams.get('search')
-  console.log(searchParams.get('search'), "Testing search Params")
 
   //fetching the data
   const { error, data } = useFetch({
@@ -27,7 +26,7 @@ function Home (){
 
  
   //getting the data from the search the user made
-  const search = useSelector((state:any) => (console.log(state, "test"), state.search.dataSearch))
+  const search = useSelector((state:any) => ( state.search.dataSearch))
   // Getting the last search from the array made when the user make a search
   const lastSearch = search[search.length -1]
   //dispatch data if user changes the value directly from the url
