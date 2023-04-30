@@ -22,8 +22,9 @@ const MainSearchBar = () => {
     return(
         <div>
         <div className="relative mt-2 rounded-md" style={{paddingTop: "20px"}}>
-          <div className="flex lg:ml-6">
-          <input type="text" name="price" id="price"
+          <div className="flex lg:ml-6" >
+          <input type="text" name="price" id="price" 
+          style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", borderRadius:"50px"}}
           onChange={e => setDebouncedTerm(e.target.value)}
           value={debouncedTerm}
           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Item..."/>
