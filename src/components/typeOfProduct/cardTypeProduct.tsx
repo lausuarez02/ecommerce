@@ -12,9 +12,9 @@ function CardTypeProduct({data}:any) {
 <div>
     <div className="bg-white py-24 sm:py-32">
     <TitleMainProduct title='Type of Products'/>
-  <div className="mx-auto max-w-7xl px-6 lg:px-8">
+  <div className="mx-auto max-w-7xl px-6 lg:px-8" >
         {data === null ? 
-        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+        <div className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none" style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", borderRadius:"50px"}}>
        <div className="p-8 sm:p-10 lg:flex-auto">
        <h3 className="text-2xl font-bold tracking-tight text-gray-900">{TITLE_ITEM}</h3>
        <p className="mt-6 text-base leading-7 text-gray-600">{TITLE_ITEM}</p>
