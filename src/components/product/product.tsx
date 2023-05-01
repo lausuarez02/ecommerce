@@ -96,48 +96,21 @@ export default function Products(props:any) {
   const dispatch = useDispatch()
  
   return (
-    <div className="bg-white">
-     <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="border-b border-gray-200">
-            <div className="flex h-16 items-center">
-              {/* Logo */}
-              <div className="ml-4 flex lg:ml-0">
-              <ArrowLeft/>
-              </div>
-              {/* Flyout menus */}
-              <div className="ml-auto flex items-center">
-                <div className="ml-4 flow-root lg:ml-6">
-                  <div >
-                  <CartIcon/>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </nav>        
+    <div className="bg-white" >  
       <div className="pt-6">
         {/* Image gallery */}
         <div className="mx-auto mt-6 max-w-2xl sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:gap-x-8 lg:px-8">
-        <h1>{titleData}</h1>
-
-         <div className="aspect-w-3 aspect-h-4 hidden overflow-hidden rounded-lg lg:block">
-            <img
-              // src={product.images[0].src}
-              // alt={product.images[0].alt}
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-       
+        <h1>{titleData}</h1>  
           <div className="aspect-w-4 aspect-h-5 sm:overflow-hidden sm:rounded-lg lg:aspect-w-3 lg:aspect-h-4">
             <img
-        src={imageData}
+              src={imageData}
               className="h-full w-full object-cover object-center"
             />
           </div>
         </div>
 
         {/* Product info */}
-        <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
+        <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-1 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
           <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
             <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">{}</h1>
           </div>
@@ -160,8 +133,11 @@ export default function Products(props:any) {
 
             <form className="mt-10">
               {/* Colors */}
-              <div>
-                <h3 className="text-sm font-medium text-gray-900">Color</h3>
+              <div className="flex items-center justify-between">
+                <h3 className="text-sm font-medium text-gray-900">Price</h3>
+                <p className="text-sm font-medium">
+                    {priceData}
+                  </p>
 
                 {/* <RadioGroup value={selectedColor} onChange={setSelectedColor} className="mt-4">
                   <RadioGroup.Label className="sr-only"> Choose a color </RadioGroup.Label>
@@ -189,39 +165,6 @@ export default function Products(props:any) {
                 Add to bag
               </button>
             </form>
-          </div>
-        
-          <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
-            {/* Description and details */}
-            <div>
-              <h3 className="sr-only">Description</h3>
-
-              <div className="space-y-6">
-                {/* <p className="text-base text-gray-900">{product.description}</p> */}
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
-
-              <div className="mt-4">
-                {/* <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                  {product.highlights.map((highlight) => (
-                    <li key={highlight} className="text-gray-400">
-                      <span className="text-gray-600">{highlight}</span>
-                    </li>
-                  ))}
-                </ul> */}
-              </div>
-            </div>
-
-            <div className="mt-10">
-              <h2 className="text-sm font-medium text-gray-900">Details</h2>
-
-              <div className="mt-4 space-y-6">
-                <p className="text-sm text-gray-600"></p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
