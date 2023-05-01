@@ -13,6 +13,10 @@
 
 # misc
 .DS_Store
+.env
+.env.REACT_APP_API_KEY
+.env.REACT_APP_API_KEY_FIREBASE
+.env.REACT_APP_FIREBASE_ID
 .env.local
 .env.development.local
 .env.test.local
