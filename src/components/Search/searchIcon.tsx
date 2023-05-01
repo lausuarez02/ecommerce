@@ -78,7 +78,7 @@ const SearchIcon = ({search}:SearchData) => {
     placeholder="Item..."
     onKeyDown={e => handleKeyDown(e)}
     onChange={e => inputOnChange(e.target.value)}
-    value={debouncedTerm}
+    value={debouncedTerm || ''}
   />
      }
   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
