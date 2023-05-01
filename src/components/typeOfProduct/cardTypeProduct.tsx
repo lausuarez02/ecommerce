@@ -31,7 +31,7 @@ function CardTypeProduct({data}:any) {
   
         data != undefined ? (data[0]['products'] as Object as any[] ).map((item:any) => {
             return(
-            <div key={item.id} className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+            <div key={item.id} className="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none" style={{ boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)", borderRadius:"50px"}}>
               <Link to={item.color}>
              <div className="p-8 sm:p-10 lg:flex-auto">
              <h3 className="text-2xl font-bold tracking-tight text-gray-900">{item.title}</h3>
