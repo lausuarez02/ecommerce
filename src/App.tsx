@@ -12,6 +12,7 @@ import Auth from 'views/auth/Auth';
 import NotFound from 'components/notFound/notFound'
 //utils
 import ProtectedRoute from './utils/protectedRoutes';
+import Checkout from 'views/checkout/checkout';
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,7 @@ function App() {
                   </ProtectedRoute>
                 }/>
         <Route path='/authLogin' element={<Auth/>} />
+        <Route path='/checkout' element={<Checkout/>}/>
         <Route path="*" element={<NotFound/>} /> 
       </Routes>
       </Provider>
