@@ -25,7 +25,11 @@ const Product = () => {
             </div>
           </div>
         </nav>      
+        <div className="bg-white py-24 sm:py-20">
+       <div className="mx-auto max-w-7xl px-6 lg:px-8">
             <Products data-testid="products"/>
+            </div>
+            </div>
         </div>
     )
 }
