@@ -7,6 +7,7 @@ import DescriptionList from "components/descriptionList/descriptionList";
 import { useSelector } from "react-redux";
 
 const Checkout = () => {
+  const {cart:{cart}} = useSelector((state:any) => state)
   const user = useSelector((state:any) => state);
   const {userData: {userProfile:[{name, email, photoURL}]}} = user
     return(
@@ -15,7 +16,7 @@ const Checkout = () => {
             <div className="bg-white py-24 sm:py-20">
        <div className="mx-auto max-w-7xl px-6 lg:px-8">
             {/* partial fix */}
-            <DescriptionList/>
+            <DescriptionList cart={cart} />
             </div>
             </div>
         </React.Fragment>
