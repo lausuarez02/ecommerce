@@ -4,10 +4,41 @@ interface DescriptionValues {
 }
 
 const DescriptionList = ({cart}:any) => {
+    const addCommaArray = (arr:any) => {
+        // let arrComma:any = []
+        for(let i = 0; i < arr.length; i++){
+            return i < arr.length - 1 ? ", " :  ""
+        }
+    }
+
+    const dataBeingMap = ((data:string) => {
+        let titleArr:any = []
+        for(let i = 0; i < cart.length;  i++){
+            switch(data){
+                case 'title':{
+                        let {title} = cart[i]
+                        titleArr.push(title)
+                        break
+                }
+                case 'price':{
+                    cart.map((price:any)  => {
+                        return price.price
+                    })
+                break
+                }
+                case 'quantity':{
+                    cart.map((quantity:any)  => {
+                        return quantity.quantity
+                    })
+                break
+                }
+            } 
+    }
+    return titleArr + addCommaArray(titleArr)
+
+        })
     return(
         <div>
-             {cart.map((data:any)  => {
-                return(
                     <div>
         <div className="px-4 sm:px-0">
             <h3 className="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>          
@@ -17,15 +48,15 @@ const DescriptionList = ({cart}:any) => {
             <dl className="divide-y divide-gray-100">
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.title}</dd>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('title') as any}</dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">Price</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.price} </dd>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('price') as any} </dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">quantity</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{data.quantity}</dd>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('quantity') as any}</dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
@@ -73,8 +104,6 @@ const DescriptionList = ({cart}:any) => {
             </dl>
         </div>
         </div>
-         )
-        })}
         </div>
     )
 }
