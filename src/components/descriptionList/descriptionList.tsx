@@ -1,66 +1,60 @@
 
 interface DescriptionValues {
-    cart: ArrayBuffer
+    cart: Array<string | any>
 }
 
-const DescriptionList = ({cart}:any) => {
+const DescriptionList = ({cart}:DescriptionValues) => {
     const addCommaArray = (arr:any) => {
-        // let arrComma:any = []
         for(let i = 0; i < arr.length; i++){
             return i < arr.length - 1 ? ", " :  ""
         }
     }
 
-    const dataBeingMap = ((data:string) => {
-        let titleArr:any = []
-        for(let i = 0; i < cart.length;  i++){
-            switch(data){
-                case 'title':{
-                        let {title} = cart[i]
-                        titleArr.push(title)
-                        break
-                }
-                case 'price':{
-                    cart.map((price:any)  => {
-                        return price.price
-                    })
-                break
-                }
-                case 'quantity':{
-                    cart.map((quantity:any)  => {
-                        return quantity.quantity
-                    })
-                break
-                }
-            } 
+    const dataBeingMap = (data:String) => {
+            let titleArr:any = [];
+            let totalPrice:number = 0
+            let totalQuantity:number = 0;
+        for(let i = 0; i < cart.length; i++){
+            let {title} = cart[i];
+            titleArr.push(title);
+            totalPrice += parseInt(cart[i]['price']);
+            totalQuantity += parseInt(cart[i]['quantity']);
+        }
+        switch(data){
+            case 'title':{
+                return titleArr + addCommaArray(titleArr) ;
+            }
+            case 'price':{
+                return totalPrice;
+            }
+            case 'quantity':{
+                return totalQuantity;
+            }
+            default:
+                return "not an option"
+        }
     }
-    return titleArr + addCommaArray(titleArr)
 
-        })
     return(
         <div>
                     <div>
         <div className="px-4 sm:px-0">
-            <h3 className="text-base font-semibold leading-7 text-gray-900">Applicant Information</h3>          
-            <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">Personal details and application.</p>
+            <h3 className="text-base font-semibold leading-7 text-gray-900">Checkout data</h3>          
+            <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-500">lorem sipum</p>
         </div>
         <div className="mt-6 border-t border-gray-100">
             <dl className="divide-y divide-gray-100">
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('title') as any}</dd>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('title')}</dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">Price</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('price') as any} </dd>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('price')} </dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">quantity</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('quantity') as any}</dd>
-            </div>
-            <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                <dt className="text-sm font-medium leading-6 text-gray-900">Salary expectation</dt>
-                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">$120,000</dd>
+                <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{dataBeingMap('quantity')}</dd>
             </div>
             <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-gray-900">About</dt>
